@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="template1.html">
+
+    <div layout:fragment="contenu">
+        <div class="container mt-5">
+            <div class="card">
+                <div class="card-header">Liste des patients</div>
+                <div class="card-body">
+                    <form method="get" th:action="@{patients}">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" name="keyword" th:value="${keyword}">
+                            <button class="btn btn-success">Rechercher</button>
+                        </div>
+                    </form>
+                    <table class="table">
+                        <tr>
+                            <th>ID</th><th>Name</th><th>Birth date</th><th>Sick</th>
+                        </tr>
+                        <tr th:each="p:${patients}">
+                            <td th:text="${p.getId()}"></td>
+                            <td th:text="${p.getName()}"></td>
+                            <td th:text="${p.getBirthDate()}"></td>
+                            <td th:text="${p.isSick()}"></td>
+                            <td><a onclick="return confirm('Etes-vous sûr de supprimer cette ligne?')" class="btn btn-danger"
+                                   th:href="@{deletePatient(id=${p.getId()}, keyword=${keyword}, page=${currentPage}, size=${size})}">Supprimer</a></td>
+                        </tr>
+                    </table>
+                    <ul class="nav nav-pills">
+                        <li th:each="page,status:${pages}">
+                            <a th:class="${status.index==currentPage}?'btn btn-primary':'btn'"
+                               class="btn" th:href="@{patients(page=${status.index}, keyword=${keyword}, size=${size})}" th:text="${status.index}">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
