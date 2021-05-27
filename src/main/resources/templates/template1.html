@@ -31,8 +31,6 @@
             </a>
             <div class="dropdown-menu">
                 <a class="dropdown-item" th:href="@{formPatient}">Ajouter</a>
-                <a class="dropdown-item" href="#">Modifier</a>
-                <a class="dropdown-item" href="#">Chercher</a>
             </div>
         </li>
     </ul>
@@ -44,7 +42,7 @@
             </a>
             <div class="dropdown-menu">
                 <a class="dropdown-item" href="#">Login</a>
-                <a class="dropdown-item" href="#">Logout</a>
+                <a class="dropdown-item" th:href="@{/logout}">Logout</a>
                 <a class="dropdown-item" href="#">Profile</a>
             </div>
         </li>
