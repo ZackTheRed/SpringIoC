@@ -7,5 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface PatientRepository extends JpaRepository<Patient, Long> {
     public Page<Patient> findByNameContains(String keyword, Pageable p);
+
     public Page<Patient> findBySickTrue(Pageable p);
 }

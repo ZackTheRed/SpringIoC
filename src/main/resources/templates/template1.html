@@ -9,45 +9,47 @@
     <script src="webjars/bootstrap/4.6.0-1/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-        <!-- Brand -->
-        <a class="navbar-brand" href="#"><img src="https://www.drchrono.com/site_media/images/logos/onpatient_icon_black_256x256.d85cee020455.png" alt="Medecin" width="50" height="50"></a>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <!-- Brand -->
+    <a class="navbar-brand" href="#"><img
+            src="https://www.drchrono.com/site_media/images/logos/onpatient_icon_black_256x256.d85cee020455.png"
+            alt="Medecin" width="50" height="50"></a>
 
-        <!-- Links -->
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="patients">Patients</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Médecin</a>
-            </li>
+    <!-- Links -->
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{/patients}">Accueil</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Médecin</a>
+        </li>
 
-            <!-- Dropdown -->
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                    Gestion des patients
-                </a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Ajouter</a>
-                    <a class="dropdown-item" href="#">Modifier</a>
-                    <a class="dropdown-item" href="#">Chercher</a>
-                </div>
-            </li>
-        </ul>
-        <ul class="navbar-nav ml-auto">
-            <!-- Dropdown -->
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbardrop2" data-toggle="dropdown">
-                    [Username]
-                </a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Login</a>
-                    <a class="dropdown-item" href="#">Logout</a>
-                    <a class="dropdown-item" href="#">Profile</a>
-                </div>
-            </li>
-        </ul>
-    </nav>
-    <section layout:fragment="contenu"></section>
+        <!-- Dropdown -->
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                Gestion des patients
+            </a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" th:href="@{formPatient}">Ajouter</a>
+                <a class="dropdown-item" href="#">Modifier</a>
+                <a class="dropdown-item" href="#">Chercher</a>
+            </div>
+        </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+        <!-- Dropdown -->
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop2" data-toggle="dropdown">
+                [Username]
+            </a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Login</a>
+                <a class="dropdown-item" href="#">Logout</a>
+                <a class="dropdown-item" href="#">Profile</a>
+            </div>
+        </li>
+    </ul>
+</nav>
+<section layout:fragment="contenu"></section>
 </body>
 </html>
