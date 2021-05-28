@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extrass-springsecurity5"
+>
 <head>
     <meta charset="UTF-8">
     <title>Patients</title>
@@ -25,7 +28,7 @@
         </li>
 
         <!-- Dropdown -->
-        <li class="nav-item dropdown">
+        <li sec:authorize="hasRole('ROLE_ADMIN')" class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
                 Gestion des patients
             </a>
@@ -38,10 +41,10 @@
         <!-- Dropdown -->
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbardrop2" data-toggle="dropdown">
-                [Username]
+                <span sec:authentication="name"></span>
             </a>
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Login</a>
+                <a sec:authorize="!isAuthenticated()" class="dropdown-item" th:href="@{/login}">Login</a>
                 <a class="dropdown-item" th:href="@{/logout}">Logout</a>
                 <a class="dropdown-item" href="#">Profile</a>
             </div>

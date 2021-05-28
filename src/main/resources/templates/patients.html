@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extrass-springsecurity5"
       layout:decorator="template1.html">
 
 <div layout:fragment="contenu">
@@ -28,11 +30,13 @@
                         <td th:text="${p.getBirthDate()}"></td>
                         <td th:text="${p.isSick()}"></td>
                         <td th:text="${p.getScore()}"></td>
-                        <td><a onclick="return confirm('Etes-vous sûr de supprimer cette ligne?')"
+                        <td sec:authorize="hasRole('ROLE_ADMIN')">
+                            <a onclick="return confirm('Etes-vous sûr de supprimer cette ligne?')"
                                class="btn btn-danger"
                                th:href="@{deletePatient(id=${p.getId()}, keyword=${keyword}, page=${currentPage}, size=${size})}">Supprimer</a>
                         </td>
-                        <td><a class="btn btn-success"
+                        <td sec:authorize="hasRole('ROLE_ADMIN')">
+                            <a class="btn btn-success"
                                th:href="@{editPatient(id=${p.id})}">Mettre à jour</a>
                         </td>
                     </tr>
